@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registro Paciente</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .navbar-custom {
+            background-color: #4CAF50;
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: white;
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img th:src="@{/img/logo.png}" alt="Logo">
+            Hell Pass Hospital
+        </a>
+    </div>
+</nav>
+<div class="container mt-5">
+    <h2 class="text-center">Registro Paciente</h2>
+    <form th:action="@{/pacientes}" th:object="${paciente}" method="post">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre">
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" class="form-control" id="apellido" th:field="*{apellido}" placeholder="Apellido">
+        </div>
+        <div class="form-group">
+            <label for="diagnostico">Diagnóstico</label>
+            <input type="text" class="form-control" id="diagnostico" th:field="*{diagnostico}" placeholder="Diagnóstico">
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/pacientes" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

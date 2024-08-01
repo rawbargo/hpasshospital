@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hell Pass Registro</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .navbar-custom {
+            background-color: #4CAF50;
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: white;
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img th:src="@{/img/logo.png}" alt="Logo">
+            Hell Pass Hospital
+        </a>
+    </div>
+</nav>
+<div class="container mt-5">
+    <h2 class="text-center">Registro de Pacientes</h2>
+    <form action="/pacientes" method="get" class="form-inline justify-content-center my-4">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" name="keyword" aria-label="Buscar">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+    <div class="text-center mb-4">
+        <a href="/pacientes/nuevo" class="btn btn-primary">Agregar Paciente</a>
+    </div>
+    <table class="table table-striped text-center">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Diagnóstico</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="paciente : ${pacientes}">
+                <td th:text="${paciente.id}">1</td>
+                <td th:text="${paciente.nombre}">Nombre</td>
+                <td th:text="${paciente.apellido}">Apellido</td>
+                <td th:text="${paciente.diagnostico}">Diagnóstico</td>
+                <td>
+                    <a th:href="@{/pacientes/editar/{id}(id=${paciente.id})}" class="btn btn-warning">Editar</a>
+                    <a th:href="@{/pacientes/eliminar/{id}(id=${paciente.id})}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
